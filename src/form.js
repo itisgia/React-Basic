@@ -1,36 +1,59 @@
 import React, { Component } from 'react';
 
 class Form extends Component{
-    constructor (props) {
+
+    constructor(props){
         super(props);
         this.onSubmit = this.onSubmit.bind(this);
+        this.onChange = this.onChange.bind(this);
     }
+
+
     render(){
         return (
             <div>
-                <form onSubmit = {this.onSubmit}>
+                <form onSubmit={this.onSubmit}>
                     <div className="form-group">
-                        <input className="form-control" ref="newItem" type="text"/>
+                        <input className="form-control" ref="newItem" type="text" value={this.props.editingValue} onChange={this.onChange}/>
                     </div>
                     <div className="form-group">
-                        <button type="submit" className="btn btn-primary btn-lg btn-block">Add New item</button>
+                        <button type="submit" className="btn btn-primary btn-lg btn-block">{this.props.buttonText}</button>
                     </div>
                 </form>
             </div>
         )
     }
 
-    onSubmit(e) {
+    onSubmit(e){
         e.preventDefault();
         var newItem = this.refs.newItem.value.trim();
         if(!newItem){
-            alert('plz enter your item');
+            alert('Please enter a new Item');
             return;
         }
-        this.props.addNew(newItem);
+
+        if(this.props.editID === 0){
+            this.props.addNew(newItem);
+        } else {
+            var updatingItem = {
+                id: this.props.editID,
+                item: newItem
+            }
+            this.props.updateItem(updatingItem);
+        }
+
+
         this.refs.newItem.value = '';
+
+
     }
+
+    onChange(e){
+        this.props.changeText(e.target.value);
+    }
+
 }
+
 
 {/*You have to wrap a componebt in div*/}
 /*
