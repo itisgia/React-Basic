@@ -37,7 +37,8 @@ class App extends Component {
         this.addNewItemtoList = this.addNewItemtoList.bind(this);
         this.handleEdit =this.handleEdit.bind(this);
         this.handleChangeText= this.handleChangeText.bind(this);
-        this.handleUpdate = this.handleUpdate.bind(this)
+        this.handleUpdate = this.handleUpdate.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
     }
 
 
@@ -104,9 +105,19 @@ class App extends Component {
             editingValue: itemToEdit.item
         })
     }
-    handledelete (itemToEdit) {
-        console.log(itemToEdit);
-    }
+    handleDelete(itemToDelete) {
+		var allItems = this.state.list;
+		for (var i = 0; i < allItems.length; i++) {
+			if (allItems[i].id === itemToDelete.id) {
+				allItems.splice(i, 1);
+				break;
+			}
+		}
+		for (var j = 0; j < allItems.length; j++) {
+			allItems[j].id = j + 1;
+		}
+		this.setState({ list: allItems });
+	}
 
     handleUpdate(updatedItem){
         var allItems = this.state.list;
