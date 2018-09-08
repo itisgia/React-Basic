@@ -4,15 +4,16 @@
     box-sizing: border-box;
 }
 body {
-    height: 100vh;
+    height: 90vh;
 }
 
 .display-4 {
     font-family: 'Crimson Text', serif;
-    font-size: 28px;
+    font-size: 38px;
     text-align: center;
     display: block;
     margin-top: 4%;
+    font-weight: 700;
 }
 
 form {
@@ -26,18 +27,74 @@ form {
 
 .flex-wrap {
     display: flex;
+    justify-content: space-between;
     margin-top: 4%;
+    width: 100%;
 }
 .notes {
     width: 300px;
     height: 250px;
     background-color: #bcc0e5;
-    margin-right: 7%;
     margin-bottom: 4%;
     position: relative;
+    border-radius: 3px;
+    vertical-align: middle;
+    padding: 30px;
+    word-wrap: break-word;
+    border: 1px solid #a0a5d8;
 }
 
 .controls {
     position: absolute;
     bottom: 0;
+    text-transform: uppercase;
+    width: 260px;
+}
+
+input {
+    outline: none;
+    border: 1px solid black;
+    width: 20vw;
+    padding: 14px 22px;
+    border-radius: 2px;
+    border: 1px solid #c5c5c5;
+}
+
+button {
+    color: white;
+    background: #3e3e3e;
+    border: none;
+    margin-left: 2%;
+    font-size: 14px;
+    font-family: 'Open Sans', sans-serif;
+    padding: 16px 25px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.edit , .delete {
+    font-weight: 300;
+    font-family: Lato,sans-serif;
+    display: block
+}
+.edit {
+    float: left;
+}
+.delete {
+    float: right
+}
+.itemP {
+    word-wrap: break-word;
+    font-family: Open sans,Helvetica,sans-serif;
+}
+
+.footer {
+    text-align: center;
+    font-family: Open sans,Helvetica,sans-serif;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    margin-bottom: 5%;
 }

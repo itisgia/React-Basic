@@ -2,8 +2,8 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-// importing the component from ./from.js
 import Form from './form';
+import Footer from './foote';
 
 class App extends Component {
 
@@ -13,15 +13,7 @@ class App extends Component {
             list: [
                 {
                     id: 1,
-                    item: 'Apples'
-                },
-                {
-                    id: 2,
-                    item: 'Pears'
-                },
-                {
-                    id: 3,
-                    item: 'Bananas'
+                    item: 'Write your tasks and turn them into cute sticky notes'
                 }
 
             ], // all property rathern then state
@@ -41,7 +33,7 @@ class App extends Component {
     render(){
         return (
             <div className="App">
-              <div className={this.state.jumboClass}>
+
                 <h1 className="display-4">To Do List <i class="fa fa-pencil-alt"></i></h1>
                 <Form
                     {...this.state}
@@ -57,7 +49,7 @@ class App extends Component {
                         deleteItem = {this.handleDelete}
                     />
                 </div>
-              </div>
+                <Footer/>
             </div>
         )
     }
@@ -122,7 +114,7 @@ class ToDoList extends Component{
             <div className="flex-wrap">
                     {
                         this.props.list.map(product => {
-                            return <div key={product.id} product={product} className="notes">{product.item}   <span className="controls"><span className="edit" onClick={this.edit.bind(this, product)}>Edit</span> - <span className="delete" onClick={this.delete.bind(this, product)}>Delete</span></span></div>
+                            return <div key={product.id} product={product} className="notes"><p className="itemP">{product.item}</p><div className="controls"><span className="edit" onClick={this.edit.bind(this, product)}>Edit</span>  <span className="delete" onClick={this.delete.bind(this, product)}>Done ✓</span></div></div>
                         })
                     }
             </div>
