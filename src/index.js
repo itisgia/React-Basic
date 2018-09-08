@@ -25,15 +25,11 @@ class App extends Component {
                 }
 
             ], // all property rathern then state
-            text: 'Hello World',
-            jumboClass: 'jumbotron text-center',
-            darkTheme: false,
             // those 3 down below will change depends on value
             editID: 0,
-            buttonText:'Add New Item',
+            buttonText:'Post-it',
             editingValue: ''
         }
-        this.changeText = this.changeText.bind(this);
         this.addNewItemtoList = this.addNewItemtoList.bind(this);
         this.handleEdit =this.handleEdit.bind(this);
         this.handleChangeText= this.handleChangeText.bind(this);
@@ -46,18 +42,7 @@ class App extends Component {
         return (
             <div className="App">
               <div className={this.state.jumboClass}>
-                <h1 className="display-4">Shopping List</h1>
-                <h3>{this.state.text}</h3>
-                {/* Calling the ShoppingList component at the bottom of the page */}
-                <ShoppingList
-                    list={this.state.list}
-                    editItem ={this.handleEdit}
-                    deleteItem = {this.handledelete}
-                />
-
-                <hr/>
-
-                {/* Calling the Form component which is in ./form.js */}
+                <h1 className="display-4">To Do List <i class="fa fa-pencil-alt"></i></h1>
                 <Form
                     {...this.state}
                     // pass every sigle states into our form they all turned them into property
@@ -65,29 +50,16 @@ class App extends Component {
                     updateItem={this.handleUpdate}
                     changeText={this.handleChangeText}
                 />
-                <button onClick={this.changeText} >Change theme of form</button>
+                <div className="list-wrapper">
+                    <ToDoList
+                        list={this.state.list}
+                        editItem ={this.handleEdit}
+                        deleteItem = {this.handleDelete}
+                    />
+                </div>
               </div>
             </div>
         )
-    }
-
-    changeText(e){
-        e.preventDefault();
-        // alert('H3 will be changed');
-        this.setState({
-            text: 'Button has been clicked',
-            darkTheme: !this.state.darkTheme
-        });
-
-        if(this.state.darkTheme === false){
-            this.setState({
-                jumboClass: 'jumbotron text-center jumboDark'
-            });
-        } else {
-            this.setState({
-                jumboClass: 'jumbotron text-center'
-            });
-        }
     }
 
     addNewItemtoList(item){
@@ -106,6 +78,7 @@ class App extends Component {
         })
     }
     handleDelete(itemToDelete) {
+
 		var allItems = this.state.list;
 		for (var i = 0; i < allItems.length; i++) {
 			if (allItems[i].id === itemToDelete.id) {
@@ -122,7 +95,7 @@ class App extends Component {
     handleUpdate(updatedItem){
         var allItems = this.state.list;
         for (var i = 0; i < allItems.length; i++) {
-            if(allItems[i].id == updatedItem.id){
+            if(allItems[i].id === updatedItem.id){
                 allItems[i].item = updatedItem.item;
                 break;
             }
@@ -143,17 +116,15 @@ class App extends Component {
     }
 }
 
-class ShoppingList extends Component{
+class ToDoList extends Component{
     render(){
         return(
-            <div>
-                <ul className="list-group">
+            <div className="flex-wrap">
                     {
                         this.props.list.map(product => {
-                            return <li key={product.id} product={product} className="list-group-item">{product.item}   <span className="controls"><span className="edit" onClick={this.edit.bind(this, product)}>Edit</span> - <span className="delete" onClick={this.delete.bind(this, product)}>Delete</span></span></li>
+                            return <div key={product.id} product={product} className="notes">{product.item}   <span className="controls"><span className="edit" onClick={this.edit.bind(this, product)}>Edit</span> - <span className="delete" onClick={this.delete.bind(this, product)}>Delete</span></span></div>
                         })
                     }
-                </ul>
             </div>
         )
     }

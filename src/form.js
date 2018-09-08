@@ -15,10 +15,9 @@ class Form extends Component{
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group">
                         <input className="form-control" ref="newItem" type="text" value={this.props.editingValue} onChange={this.onChange}/>
-                    </div>
-                    <div className="form-group">
                         <button type="submit" className="btn btn-primary btn-lg btn-block">{this.props.buttonText}</button>
                     </div>
+
                 </form>
             </div>
         )
