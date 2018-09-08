@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './app.css';
 import Form from './form';
 import Footer from './foote';
 
