@@ -53,10 +53,4 @@ class Form extends Component{
 
 }
 
-
-{/*You have to wrap a componebt in div*/}
-/*
-    You only need to export if the component is being
-    refrenced on another file
-*/
 export default Form;

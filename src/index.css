@@ -8,12 +8,12 @@ body {
 }
 
 .display-4 {
-    font-family: 'Crimson Text', serif;
-    font-size: 38px;
+    font-family: 'Lato', sans-serif;
+    font-weight : bold;
+    font-size: 58px;
     text-align: center;
     display: block;
     margin-top: 4%;
-    font-weight: 700;
 }
 
 form {
@@ -27,7 +27,7 @@ form {
 
 .flex-wrap {
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
     margin-top: 4%;
     width: 100%;
 }
@@ -35,20 +35,25 @@ form {
     width: 300px;
     height: 250px;
     background-color: #bcc0e5;
+    margin:0;
     margin-bottom: 4%;
+    margin-right: 10px;
     position: relative;
     border-radius: 3px;
     vertical-align: middle;
     padding: 30px;
     word-wrap: break-word;
     border: 1px solid #a0a5d8;
+    text-align: center;
 }
 
 .controls {
     position: absolute;
     bottom: 0;
     text-transform: uppercase;
-    width: 260px;
+    width: 80%;
+    margin-bottom: 13px;
+    font-size: 10px;
 }
 
 input {
@@ -74,23 +79,35 @@ button {
 
 .edit , .delete {
     font-weight: 300;
-    font-family: Lato,sans-serif;
-    display: block
+    font-family: 'Lato', sans-serif;
+    display: block;
+    letter-spacing: 8px;
+    color :#555656;
+
 }
 .edit {
     float: left;
 }
+
 .delete {
     float: right
 }
+
+.delete:hover {
+    color: #e5e5e5;
+}
+.edit:hover {
+    color: #e5e5e5;
+}
 .itemP {
     word-wrap: break-word;
-    font-family: Open sans,Helvetica,sans-serif;
+    font-family: 'Open Sans', sans-serif;
+    color: #4c4b4b;
 }
 
 .footer {
     text-align: center;
-    font-family: Open sans,Helvetica,sans-serif;
+    font-family: 'Open Sans', sans-serif;
     position: absolute;
     bottom: 0;
     right: 0;
